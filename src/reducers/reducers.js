@@ -1,4 +1,5 @@
 import {PARSE_MARK_DOWN_TEXT} from '../actions/actions'
+import {combineReducers} from "redux";
 var marked = require('marked');
 
 function  markDownText(state = '', action){
@@ -7,3 +8,9 @@ function  markDownText(state = '', action){
 			return marked(state)
 	}
 }
+
+const memoApp = combineReducers({
+	markDownText
+});
+
+export default memoApp
