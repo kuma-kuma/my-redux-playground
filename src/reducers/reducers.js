@@ -20,6 +20,10 @@ function memos(state = [], action){
 
 }
 
+function memo(state = '', action){
+
+}
+
 const memoApp = combineReducers({
 	parsedText,
 	memos
