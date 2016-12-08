@@ -44,12 +44,10 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	"use strict";
-
 	/**
 	 * Created by kuma on 2016/12/01.
 	 */
-	console.log("Hello");
+	"use strict";
 
 /***/ }
 /******/ ]);
