@@ -18,7 +18,8 @@ function memos(state = [], action){
 }
 
 const memoApp = combineReducers({
-	parsedText
+	parsedText,
+	memos
 });
 
 export default memoApp
