@@ -1,3 +1,5 @@
-/**
- * Created by kuma on 2016/12/01.
- */
+import { parseMarkDownText, addMemo} from './actions/actions'
+import memoApp from'./reducers/reducers'
+import { createStore } from 'redux'
+
+let store = createStore(memoApp)
