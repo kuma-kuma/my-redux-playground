@@ -5,6 +5,6 @@ export function parseMarkDownText(index){
 	return { type: PARSE_MARK_DOWN_TEXT, index}
 }
 
-export function addMemo(title){
-	return { type: ADD_MEMO, title}
+export function addMemo(title, id){
+	return { type: ADD_MEMO, title, id}
 }

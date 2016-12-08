@@ -14,7 +14,11 @@ function memos(state = [], action){
 		case ADD_MEMO:
 			return [
 				...state,
-				memo(undefined, action)
+				{
+					text: '',
+					id: action.id,
+					title: action.title
+				}
 			]
 	}
 
