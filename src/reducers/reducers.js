@@ -5,7 +5,7 @@ var marked = require('marked');
 function  parsedText(state = '', action){
 	switch(action.type){
 		case PARSE_MARK_DOWN_TEXT:
-			return marked(state.memos[id].text)
+			return marked(state.memos[action.index].text)
 	}
 }
 
