@@ -12,7 +12,10 @@ function  parsedText(state = '', action){
 function memos(state = [], action){
 	switch(action.type){
 		case ADD_MEMO:
-			return
+			return [
+				...state,
+				memo(undefined, action)
+			]
 	}
 
 }
