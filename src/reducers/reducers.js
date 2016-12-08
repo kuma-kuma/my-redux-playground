@@ -2,10 +2,10 @@ import {PARSE_MARK_DOWN_TEXT, ADD_MEMO} from '../actions/actions'
 import {combineReducers} from "redux";
 var marked = require('marked');
 
-function  markDownText(state = '', action){
+function  parsedText(state = '', action){
 	switch(action.type){
 		case PARSE_MARK_DOWN_TEXT:
-			return marked(state)
+			return marked(state.memos[id].text)
 	}
 }
 
@@ -18,7 +18,7 @@ function memos(state = [], action){
 }
 
 const memoApp = combineReducers({
-	markDownText
+	parsedText
 });
 
 export default memoApp
