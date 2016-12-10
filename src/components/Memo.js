@@ -11,4 +11,4 @@ Memo.propTypes = {
 	text: PropTypes.string.isRequired
 }
 
-export default Memo
+export default Memo;
