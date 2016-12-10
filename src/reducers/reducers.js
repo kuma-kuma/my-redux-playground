@@ -6,6 +6,8 @@ function  parsedText(state = '', action){
 	switch(action.type){
 		case PARSE_MARK_DOWN_TEXT:
 			return marked(state.memos[action.index].text)
+		default:
+			return state;
 	}
 }
 
@@ -20,6 +22,8 @@ function memos(state = [], action){
 					title: action.title
 				}
 			]
+		default:
+			return state
 	}
 
 }
