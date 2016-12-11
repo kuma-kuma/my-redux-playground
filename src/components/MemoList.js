@@ -1,10 +1,11 @@
 import React, {PropTypes} from "react";
-import Memo from "./Memo";
+import MemoContainer from "../containers/MemoContainer";
+
 
 const MemoList = ({memos}) => (
 	<div>
 		{memos.map((memo) =>
-			<Memo
+			<MemoContainer
 				key={memo.id}
 				{...memo}
 			/>
