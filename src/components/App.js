@@ -1,5 +1,5 @@
 import React from "react";
-import MemoList from "MemoList";
+import MemoList from "./MemoList";
 
 const App = () => (
 	<div>

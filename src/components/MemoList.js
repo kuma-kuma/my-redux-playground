@@ -1,5 +1,5 @@
 import React, {PropTypes} from "react";
-import Memo from "Memo";
+import Memo from "./Memo";
 
 const MemoList = ({memos}) => (
 	<div>
