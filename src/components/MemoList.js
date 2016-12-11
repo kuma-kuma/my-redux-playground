@@ -20,6 +20,6 @@ MemoList.propTypes = {
 		title: PropTypes.string.isRequired
 	}).isRequired).isRequired,
 	onMemoClick: PropTypes.func.isRequired
-}
+};
 
 export default MemoList;

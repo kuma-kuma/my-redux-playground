@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
 			dispatch(displayMemo(id));
 		}
 	}
-}
+};
 
 const MemoListContainer = connect(
 	mapStateToProps,

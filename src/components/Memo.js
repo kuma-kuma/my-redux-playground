@@ -5,7 +5,7 @@ const Memo = ({text, title, onChange, id}) => (
 		<textarea>{title}</textarea>
 		<textarea
 			onChange={e => {
-				e.preventDefault()
+				e.preventDefault();
 				onChange(e.target.value, id)
 			}}
 		>
