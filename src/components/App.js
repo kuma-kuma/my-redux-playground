@@ -1,9 +1,9 @@
 import React from "react";
-import MemoList from "./MemoList";
+import MemoListContainer from "../containers/MemoListContainer";
 
 const App = () => (
 	<div>
-		<MemoList/>
+		<MemoListContainer/>
 	</div>
 )
 
