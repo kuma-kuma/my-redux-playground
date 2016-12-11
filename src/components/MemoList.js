@@ -2,12 +2,13 @@ import React, {PropTypes} from "react";
 import MemoContainer from "../containers/MemoContainer";
 
 
-const MemoList = ({memos}) => (
+const MemoList = ({memos, onMemoClick}) => (
 	<div>
 		{memos.map((memo) =>
 			<MemoContainer
 				key={memo.id}
 				{...memo}
+				onClick={() => onMemoClick(memo.id)}
 			/>
 		)}
 	</div>
