@@ -2,7 +2,7 @@ import React from "react";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {render} from "react-dom";
-import {addMemo, modifyText} from "./actions/actions";
+import {addMemo, modifyText, displayMemo} from "./actions/actions";
 import memoApp from "./reducers/reducers";
 import App from "./components/App";
 
@@ -15,6 +15,7 @@ let unsubscribe = store.subscribe(() =>
 store.dispatch(addMemo('aiu', 0));
 store.dispatch(addMemo('iue', 1));
 store.dispatch(modifyText('aiueo', 0));
+store.dispatch(displayMemo(0));
 
 render(
 	<Provider store={store}>
