@@ -1,31 +1,53 @@
-import {PARSE_MARK_DOWN_TEXT, ADD_MEMO} from '../actions/actions'
+import {PARSE_MARK_DOWN_TEXT, ADD_MEMO, MODIFY_TEXT} from "../actions/actions";
 import {combineReducers} from "redux";
-var marked = require('marked');
+const marked = require('marked');
 
-function  parsedText(state = '', action){
-	switch(action.type){
+function parsedText(state = '', action) {
+	switch (action.type) {
 		case PARSE_MARK_DOWN_TEXT:
-			return marked(state.memos[action.index].text)
+			return marked(state.memos[action.index].text);
 		default:
 			return state;
 	}
 }
 
-function memos(state = [], action){
-	switch(action.type){
+function memos(state = [], action) {
+	switch (action.type) {
 		case ADD_MEMO:
 			return [
 				...state,
-				{
-					text: '',
-					id: action.id,
-					title: action.title
-				}
-			]
+				memo(state, action)
+			];
+		case MODIFY_TEXT:
+			return state.map(m =>
+				memo(m, action)
+			);
 		default:
 			return state
 	}
 
+}
+
+function memo(state = {}, action) {
+	switch (action.type) {
+		case ADD_MEMO:
+			return {
+				text: '',
+				id: action.id,
+				title: action.title
+			};
+		case  MODIFY_TEXT:
+			if (state.id !== action.id) {
+				return state;
+			}
+
+			return {
+				...state,
+				text: action.text,
+			};
+		default:
+			return state;
+	}
 }
 
 const memoApp = combineReducers({
