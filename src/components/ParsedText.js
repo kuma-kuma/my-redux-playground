@@ -1,8 +1,8 @@
 import React, {PropTypes} from "react";
 
-const ParsedText = (text) => (
-	<div>
-		<p>{text}</p>
+const ParsedText = ({text}) => (
+	<div dangerouslySetInnerHTML={{__html: text}}>
+
 	</div>
 );
 

@@ -14,7 +14,7 @@ let unsubscribe = store.subscribe(() =>
 
 store.dispatch(addMemo('aiu', 0));
 store.dispatch(addMemo('iue', 1));
-store.dispatch(modifyText('aiueo', 0));
+store.dispatch(modifyText('# aiueo', 0));
 store.dispatch(displayMemo(0));
 
 render(
