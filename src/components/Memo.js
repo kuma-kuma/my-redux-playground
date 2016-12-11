@@ -5,10 +5,10 @@ const Memo = ({text, title}) => (
 		<textarea>{title}</textarea>
 		<textarea>{text}</textarea>
 	</div>
-)
+);
 
 Memo.propTypes = {
 	text: PropTypes.string.isRequired
-}
+};
 
 export default Memo;

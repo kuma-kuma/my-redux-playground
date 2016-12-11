@@ -10,6 +10,6 @@ const MemoList = ({memos}) => (
 			/>
 		)}
 	</div>
-)
+);
 
 export default MemoList;

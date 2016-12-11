@@ -5,6 +5,6 @@ const App = () => (
 	<div>
 		<MemoListContainer/>
 	</div>
-)
+);
 
 export default App

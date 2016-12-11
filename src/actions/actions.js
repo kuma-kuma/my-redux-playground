@@ -4,12 +4,12 @@ export const MODIFY_TEXT = 'MODIFY_TEXT';
 
 export const parseMarkDownText = (index) => {
 	return { type: PARSE_MARK_DOWN_TEXT, index}
-}
+};
 
 export const addMemo = (title, id) => {
 	return { type: ADD_MEMO, title, id}
-}
+};
 
 export const modifyText = (text, id) => {
 	return {type: MODIFY_TEXT, text, id}
-}
+};

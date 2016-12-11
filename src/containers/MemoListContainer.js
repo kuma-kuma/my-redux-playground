@@ -4,10 +4,10 @@ import MemoList from "../components/MemoList";
 
 const mapStateToProps = state => {
 	return state
-}
+};
 
 const MemoListContainer = connect(
 	mapStateToProps
-)(MemoList)
+)(MemoList);
 
 export default MemoListContainer
