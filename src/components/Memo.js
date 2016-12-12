@@ -1,10 +1,10 @@
 import React, {PropTypes} from "react";
 
-const Memo = ({text, title, id, onChange}) => (
+const Memo = ({text, title, displayMemoId, onChange}) => (
 	<div>
 		<textarea>{title}</textarea>
 		<textarea onChange={e => {
-			onChange(e.target.value)
+			onChange(displayMemoId, e.target.value)
 		}}>
 			{text}
 		</textarea>

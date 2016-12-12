@@ -7,13 +7,16 @@ const mapStateToProps = state => {
 		case NON_DISPLAYED_MEMO:
 			return {};
 		default:
-			return state;
+			return {
+				...state.memos[state.displayedMemoId],
+				displayMemoId: state.displayedMemoId
+			};
 	}
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onChangeMemo: (id, text) => dispatch(modifyText(id, text))
+		onChange: (id, text) => dispatch(modifyText(id, text))
 	}
 };
 
