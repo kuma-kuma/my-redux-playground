@@ -12,9 +12,9 @@ let unsubscribe = store.subscribe(() =>
 	console.log(store.getState())
 );
 
-store.dispatch(addMemo('aiu', 0));
-store.dispatch(addMemo('iue', 1));
-store.dispatch(modifyText('# aiueo', 0));
+store.dispatch(addMemo(0, 'aiu'));
+store.dispatch(addMemo(1, 'iue'));
+store.dispatch(modifyText(0, '# aiueo'));
 store.dispatch(displayMemo(0));
 
 render(

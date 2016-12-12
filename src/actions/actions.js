@@ -9,11 +9,11 @@ export const parseMarkDownText = (index) => {
 	return { type: PARSE_MARK_DOWN_TEXT, index}
 };
 
-export const addMemo = (title, id) => {
+export const addMemo = (id, title) => {
 	return { type: ADD_MEMO, title, id}
 };
 
-export const modifyText = (text, id) => {
+export const modifyText = (id, text) => {
 	return {type: MODIFY_TEXT, text, id}
 };
 
