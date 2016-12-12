@@ -3,15 +3,10 @@ import React, {PropTypes} from "react";
 const Memo = ({text, title, id, onChange}) => (
 	<div>
 		<textarea>{title}</textarea>
-		<textarea
-			onChange={e => {
-				e.preventDefault();
-				onChange(e.target.value, id)
-			}}
-		>
-
+		<textarea onChange={e => {
+			onChange(e.target.value)
+		}}>
 			{text}
-
 		</textarea>
 	</div>
 );
