@@ -1,4 +1,3 @@
-import React from "react";
 import {connect} from "react-redux";
 import ParsedText from "../components/ParsedText";
 import {NON_DISPLAYED_MEMO} from "../actions/actions";

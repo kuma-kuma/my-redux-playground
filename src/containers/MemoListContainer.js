@@ -1,4 +1,3 @@
-import React from "react";
 import {connect} from "react-redux";
 import MemoList from "../components/MemoList";
 import {displayMemo, modifyText} from "../actions/actions";
