@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import MemoList from "../components/MemoList";
-import {displayMemo, modifyText} from "../actions/actions";
+import {displayMemo} from "../actions/actions";
 
 const mapStateToProps = state => {
 	return state
@@ -8,12 +8,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onMemoClick: (id) => {
+		onMemoSelect: (id) => {
 			dispatch(displayMemo(id));
 		},
-		onMemoChange: (id, text) => {
-			dispatch(modifyText(id, text))
-		}
 	}
 };
 
