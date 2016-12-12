@@ -1,16 +1,22 @@
 import React, {PropTypes} from "react";
-import MemoContainer from "../containers/MemoContainer";
+import SelectMemoButton from "./SelectMemoButton";
+import Memo from "./Memo";
 
 
-const MemoList = ({memos, onMemoClick}) => (
+const MemoList = ({memos, onMemoClick, onMemoChange}) => (
 	<div>
-		{memos.map((memo) =>
-			<MemoContainer
+		{memos.map((memo) => [
+			<Memo
 				key={memo.id}
+				{...memo}
+				onChange={(text) => onMemoChange(memo.id, text)}
+			/>,
+			<SelectMemoButton
 				{...memo}
 				onClick={() => onMemoClick(memo.id)}
 			/>
-		)}
+
+		])}
 	</div>
 );
 
@@ -20,7 +26,8 @@ MemoList.propTypes = {
 		text: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired
 	}).isRequired).isRequired,
-	onMemoClick: PropTypes.func.isRequired
+	onMemoClick: PropTypes.func.isRequired,
+	onMemoChangeClick: PropTypes.func.isRequired
 };
 
 export default MemoList;
