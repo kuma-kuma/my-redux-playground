@@ -2,12 +2,13 @@ import React, {PropTypes} from "react";
 import SelectMemoButton from "./SelectMemoButton";
 
 
-const MemoList = ({memos, onMemoClick}) => (
+const MemoList = ({memos, onMemoSelect}) => (
 	<div>
 		{memos.map((memo) =>
 			<SelectMemoButton
+				key={memo.id}
 				{...memo}
-				onClick={() => onMemoClick(memo.id)}
+				onClick={() => onMemoSelect(memo.id)}
 			/>
 		)}
 	</div>
