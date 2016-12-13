@@ -2,18 +2,21 @@ import React, {PropTypes} from "react";
 
 const Memo = ({text, title, displayMemoId, onChange}) => (
 	<div>
-		<textarea>{title}</textarea>
-		<textarea onChange={e => {
-			onChange(displayMemoId, e.target.value)
-		}}>
-			{text}
+		<textarea value={title}> </textarea>
+		<textarea
+			onChange={e => {
+				onChange(displayMemoId, e.target.value)
+			}}
+			value={text}
+		>
 		</textarea>
 	</div>
 );
 
 Memo.propTypes = {
 	text: PropTypes.string.isRequired,
-	id: PropTypes.number.isRequired,
+	title: PropTypes.string.isRequired,
+	displayMemoId: PropTypes.number.isRequired,
 	onChange: PropTypes.func.isRequired,
 };
 
