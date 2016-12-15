@@ -34,7 +34,7 @@ describe('Memo', () => {
 	it('should have textarea that receive title of props', () => {
 		const {wrapper} = setup();
 		expect(wrapper.find('textarea[value="testTitle"]').length).toBe(1);
-	})
+	});
 
 	it('should call onChange if textarea is changed', () => {
 		const {wrapper, props} = setup();
