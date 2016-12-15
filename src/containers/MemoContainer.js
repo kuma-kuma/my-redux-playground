@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onChange: (id, text) => dispatch(modifyText(id, text))
+		onMemoChange: (id, text) => dispatch(modifyText(id, text))
 	}
 };
 

@@ -1,11 +1,11 @@
 import React, {PropTypes} from "react";
 
-const Memo = ({text, title, displayMemoId, onChange}) => (
+const Memo = ({text, title, displayMemoId, onMemoChange}) => (
 	<div>
 		<textarea value={title}> </textarea>
 		<textarea
 			onChange={e => {
-				onChange(displayMemoId, e.target.value)
+				onMemoChange(displayMemoId, e.target.value)
 			}}
 			value={text}
 		>
@@ -17,7 +17,7 @@ Memo.propTypes = {
 	text: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	displayMemoId: PropTypes.number.isRequired,
-	onChange: PropTypes.func.isRequired,
+	onMemoChange: PropTypes.func.isRequired,
 };
 
 export default Memo;
