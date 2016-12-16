@@ -1,5 +1,6 @@
-import {ADD_MEMO, MODIFY_TEXT, DISPLAY_MEMO, NON_DISPLAYED_MEMO} from "../actions/actions";
+import {ADD_MEMO, MODIFY_TEXT} from "../actions/actions";
 import {combineReducers} from "redux";
+import displayedMemoId from "./displayedMemoId";
 const marked = require('marked');
 
 function memos(state = [], action) {
@@ -41,14 +42,6 @@ function memo(state = {}, action) {
 	}
 }
 
-function displayedMemoId(state = NON_DISPLAYED_MEMO, action) {
-	switch (action.type) {
-		case DISPLAY_MEMO:
-			return state = action.id;
-		default:
-			return state;
-	}
-}
 
 const memoApp = combineReducers({
 	memos,
