@@ -1,15 +1,6 @@
-import {PARSE_MARK_DOWN_TEXT, ADD_MEMO, MODIFY_TEXT, DISPLAY_MEMO, NON_DISPLAYED_MEMO} from "../actions/actions";
+import {ADD_MEMO, MODIFY_TEXT, DISPLAY_MEMO, NON_DISPLAYED_MEMO} from "../actions/actions";
 import {combineReducers} from "redux";
 const marked = require('marked');
-
-function parsedText(state = '', action) {
-	switch (action.type) {
-		case PARSE_MARK_DOWN_TEXT:
-			return marked(state.memos[action.index].text);
-		default:
-			return state;
-	}
-}
 
 function memos(state = [], action) {
 	switch (action.type) {
@@ -60,7 +51,6 @@ function displayedMemoId(state = NON_DISPLAYED_MEMO, action) {
 }
 
 const memoApp = combineReducers({
-	parsedText,
 	memos,
 	displayedMemoId
 });
