@@ -6,7 +6,6 @@ describe('memos reducer', () => {
 		expect(
 			reducer(undefined, {})
 		).toEqual({
-			parsedText: '',
 			memos: [],
 			displayedMemoId: types.NON_DISPLAYED_MEMO
 		})
@@ -23,7 +22,6 @@ describe('memos reducer', () => {
 				}
 			)
 		).toEqual({
-			parsedText: '',
 			memos: [
 				{
 					text: '',
@@ -39,7 +37,6 @@ describe('memos reducer', () => {
 		expect(
 			reducer(
 				{
-					parsedText: '',
 					memos: [
 						{
 							text: 'not modified',
@@ -57,7 +54,6 @@ describe('memos reducer', () => {
 				}
 			)
 		).toEqual({
-			parsedText: '',
 			memos: [
 				{
 					text: 'modified',
@@ -73,7 +69,6 @@ describe('memos reducer', () => {
 		expect(
 			reducer(
 				{
-					parsedText: '',
 					memos: [],
 					displayedMemoId: types.NON_DISPLAYED_MEMO
 				}
@@ -84,7 +79,6 @@ describe('memos reducer', () => {
 				}
 			)
 		).toEqual({
-			parsedText: '',
 			memos: [],
 			displayedMemoId: 0
 		})
