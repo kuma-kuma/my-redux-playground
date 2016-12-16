@@ -1,15 +1,15 @@
 import React, {PropTypes} from "react";
 
-const SelectMemoButton = ({title, onClick}) => (
+const SelectMemoButton = ({title, onSelectButtonClick}) => (
 	<div>
-		<button onClick={onClick}>{title}</button>
+		<button onClick={onSelectButtonClick}>{title}</button>
 	</div>
 );
 
 
 SelectMemoButton.PropTypes = {
 	title: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired,
+	onSelectButtonClick: PropTypes.func.isRequired,
 };
 
 export default SelectMemoButton;
