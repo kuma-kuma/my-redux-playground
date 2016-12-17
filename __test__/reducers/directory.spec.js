@@ -4,7 +4,7 @@ import * as types from "../../src/actions/actions";
 describe('directory', () => {
 
 	it('should return the initial state', () => {
-		expect(reducer(undefined, {})).toBe({});
+		expect(reducer(undefined, {})).toEqual({});
 	});
 
 	it('should handle add memo', () => {
