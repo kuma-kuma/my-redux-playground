@@ -2,6 +2,7 @@ export const PARSE_MARK_DOWN_TEXT = 'PARSE_MARK_DOWN_TEXT';
 export const ADD_MEMO = 'ADD_MEMO';
 export const MODIFY_TEXT = 'MODIFY_TEXT';
 export const DISPLAY_MEMO = 'DISPLAY_MEMO';
+export const DELETE_MEMO = 'DELETE_MEMO';
 
 export const NON_DISPLAYED_MEMO = -1;
 
