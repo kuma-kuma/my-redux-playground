@@ -14,8 +14,8 @@ export const addMemo = (id, title, path) => {
 	return {type: ADD_MEMO, id, title, path}
 };
 
-export const modifyText = (id, text) => {
-	return {type: MODIFY_TEXT, text, id}
+export const modifyMemo = (id, text, title) => {
+	return {type: MODIFY_TEXT, id, text, title}
 };
 
 export const displayMemo = (id) => {

@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {modifyText, NON_DISPLAYED_MEMO} from "../actions/actions";
+import {modifyMemo, NON_DISPLAYED_MEMO} from "../actions/actions";
 import Memo from "../components/Memo";
 
 const mapStateToProps = state => {
@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onMemoChange: (id, text) => dispatch(modifyText(id, text))
+		onMemoChange: (id, text) => dispatch(modifyMemo(id, text))
 	}
 };
 
