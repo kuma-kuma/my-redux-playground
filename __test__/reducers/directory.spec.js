@@ -74,11 +74,12 @@ describe('directory', () => {
 				{
 					type: types.MODIFY_MEMO,
 					id: 4,
-					text: 'modified'
+					text: 'text is modified',
+					title: 'title is modified'
 				}
 			)
 		).toEqual({
-			4: getMockState(4, 'modified', 'title', '4'),
+			4: getMockState(4, 'text is modified', 'title is modified', '4'),
 			10: notAffectedState
 		})
 	});
