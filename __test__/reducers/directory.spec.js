@@ -94,7 +94,7 @@ describe('directory', () => {
 					3: mock.getMockDirectory(3, 'dir2', '/dir1/dir2/'),
 					4: mock.getMockMemo(4, 'text', 'title', '/dir1/dir2/4'),
 					5: mock.getMockDirectory(5, 'dir3', '/dir1/dir3/'),
-					6: mock.getMockMemo(6, 'text', 'title', '/dir3/6'),
+					6: mock.getMockMemo(6, 'text', 'title', '/dir1/dir3/6'),
 					7: mock.getMockDirectory(7, 'dir4', '/dir1/dir2/dir4/')
 				},
 				{
@@ -126,7 +126,7 @@ describe('directory', () => {
 				},
 				{
 					type: types.MODIFY_DIRECTORY,
-					id: 2,
+					id: 3,
 					title: 'modified2'
 				}
 			)
