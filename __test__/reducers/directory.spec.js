@@ -141,7 +141,46 @@ describe('directory', () => {
 		})
 	});
 
-	it('should handle update memo', () => {
-
+	it('should handle move directory', () => {
+		expect(
+			reducer(
+				{
+					1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
+					2: mock.getMockDirectory(2, 'dir2', '/dir1/dir2/'),
+					3: mock.getMockMemo(3, 'memo', 'memo3', '/dir1/dir2/dir3/memo3'),
+					4: mock.getMockDirectory(4, 'dir3', '/dir1/dir2/dir3/')
+				},
+				{
+					type: types.MOVE_DIRECTORY,
+					id: 4,
+					path: '/'
+				}
+			)
+		).toEqual({
+			1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
+			2: mock.getMockDirectory(2, 'dir2', '/dir1/dir2/'),
+			3: mock.getMockMemo(3, 'memo', 'memo3', '/dir3/memo3'),
+			4: mock.getMockDirectory(4, 'dir3', '/dir3/')
+		});
+		expect(
+			reducer(
+				{
+					1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
+					2: mock.getMockDirectory(2, 'dir2', '/dir1/dir2/'),
+					3: mock.getMockMemo(3, 'memo', 'memo3', '/dir1/dir2/dir3/memo3'),
+					4: mock.getMockDirectory(4, 'dir3', '/dir1/dir2/dir3/')
+				},
+				{
+					type: types.MOVE_DIRECTORY,
+					id: 4,
+					path: '/dir1/'
+				}
+			)
+		).toEqual({
+			1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
+			2: mock.getMockDirectory(2, 'dir2', '/dir1/dir2/'),
+			3: mock.getMockMemo(3, 'memo', 'memo3', '/dir1/dir3/memo3'),
+			4: mock.getMockDirectory(4, 'dir3', '/dir1/dir3/')
+		})
 	});
 });
