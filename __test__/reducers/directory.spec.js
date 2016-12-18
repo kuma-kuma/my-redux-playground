@@ -1,8 +1,10 @@
 import reducer from "../../src/reducers/directory";
 import * as types from "../../src/actions/actions";
-import getMockState from "../mock/mockState";
+import mock from "../mock/mockState";
 
 describe('directory', () => {
+
+	const notAffectedState = mock.getMockMemo(10, 'test', 'testTitle', '10');
 
 	it('should return the initial state', () => {
 		expect(reducer(undefined, {})).toEqual({});
@@ -64,11 +66,10 @@ describe('directory', () => {
 	});
 
 	it('should handle modify memo', () => {
-		const notAffectedState = getMockState(10, 'test', 'testTitle', '10');
 		expect(
 			reducer(
 				{
-					4: getMockState(4, 'text', 'title', '4'),
+					4: mock.getMockMemo(4, 'text', 'title', '4'),
 					10: notAffectedState
 				},
 				{
@@ -79,13 +80,65 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
-			4: getMockState(4, 'text is modified', 'title is modified', '4'),
+			4: mock.getMockMemo(4, 'text is modified', 'title is modified', '4'),
 			10: notAffectedState
 		})
 	});
 
-	it('should handle save memo', () => {
+	it('should handle modify directory', () => {
+		expect(
+			reducer(
+				{
+					1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
+					2: mock.getMockMemo(2, 'text', 'title', '/dir1/2'),
+					3: mock.getMockDirectory(3, 'dir2', '/dir1/dir2/'),
+					4: mock.getMockMemo(4, 'text', 'title', '/dir1/dir2/4'),
+					5: mock.getMockDirectory(5, 'dir3', '/dir1/dir3/'),
+					6: mock.getMockMemo(6, 'text', 'title', '/dir3/6'),
+					7: mock.getMockDirectory(7, 'dir4', '/dir1/dir2/dir4/')
+				},
+				{
+					type: types.MODIFY_DIRECTORY,
+					id: 1,
+					title: 'modified1'
+				}
+			)
+		).toEqual({
+			1: mock.getMockDirectory(1, 'modified1', '/modified1/'),
+			2: mock.getMockMemo(2, 'text', 'title', '/modified1/2'),
+			3: mock.getMockDirectory(3, 'dir2', '/modified1/dir2/'),
+			4: mock.getMockMemo(4, 'text', 'title', '/modified1/dir2/4'),
+			5: mock.getMockDirectory(5, 'dir3', '/modified1/dir3/'),
+			6: mock.getMockMemo(6, 'text', 'title', '/modified1/dir3/6'),
+			7: mock.getMockDirectory(7, 'dir4', '/modified1/dir2/dir4/')
+		});
 
+		expect(
+			reducer(
+				{
+					1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
+					2: mock.getMockMemo(2, 'text', 'title', '/dir1/2'),
+					3: mock.getMockDirectory(3, 'dir2', '/dir1/dir2/'),
+					4: mock.getMockMemo(4, 'text', 'title', '/dir1/dir2/4'),
+					5: mock.getMockDirectory(5, 'dir3', '/dir1/dir3/'),
+					6: mock.getMockMemo(6, 'text', 'title', '/dir3/6'),
+					7: mock.getMockDirectory(7, 'dir4', '/dir1/dir2/dir4/')
+				},
+				{
+					type: types.MODIFY_DIRECTORY,
+					id: 2,
+					title: 'modified2'
+				}
+			)
+		).toEqual({
+			1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
+			2: mock.getMockMemo(2, 'text', 'title', '/dir1/2'),
+			3: mock.getMockDirectory(3, 'modified2', '/dir1/modified2/'),
+			4: mock.getMockMemo(4, 'text', 'title', '/dir1/modified2/4'),
+			5: mock.getMockDirectory(5, 'dir3', '/dir1/dir3/'),
+			6: mock.getMockMemo(6, 'text', 'title', '/dir3/6'),
+			7: mock.getMockDirectory(7, 'dir4', '/dir1/modified2/dir4/')
+		})
 	});
 
 	it('should handle update memo', () => {
