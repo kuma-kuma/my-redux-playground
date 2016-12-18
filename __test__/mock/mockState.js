@@ -15,5 +15,7 @@ const getMockDirectory = (id, title, path) => {
 	}
 };
 
-export default getMockMemo;
-export default getMockDirectory;
+export default {
+	getMockMemo,
+	getMockDirectory
+}
