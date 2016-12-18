@@ -1,5 +1,6 @@
 import reducer from "../../src/reducers/directory";
 import * as types from "../../src/actions/actions";
+import getMockState from "../mock/mockState";
 
 describe('directory', () => {
 
@@ -59,6 +60,26 @@ describe('directory', () => {
 				text: 'test',
 				title: 'title5'
 			}
+		})
+	});
+
+	it('should handle modify memo', () => {
+		const notAffectedState = getMockState(10, 'test', 'testTitle', '10');
+		expect(
+			reducer(
+				{
+					4: getMockState(4, 'text', 'title', '4'),
+					10: notAffectedState
+				},
+				{
+					type: types.MODIFY_TEXT,
+					id: 4,
+					text: 'modified'
+				}
+			)
+		).toEqual({
+			4: getMockState(4, 'modified', 'title', '4'),
+			10: notAffectedState
 		})
 	});
 
