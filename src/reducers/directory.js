@@ -1,4 +1,4 @@
-import {ADD_MEMO, MODIFY_MEMO, MODIFY_DIRECTORY, DELETE_MEMO_OR_DIRECTORY} from "../actions/actions";
+import {ADD_MEMO, MODIFY_MEMO, MODIFY_DIRECTORY, MOVE_DIRECTORY, DELETE_MEMO_OR_DIRECTORY} from "../actions/actions";
 import _ from "lodash";
 
 const fileStructure = (state = {}, action) => {
@@ -16,7 +16,7 @@ const fileStructure = (state = {}, action) => {
 				return memoOrDirectory(o, action);
 			});
 		case MODIFY_DIRECTORY:
-			const previousPath = state[action.id]["path"];
+			const previousPath = getPath(state, action.id);
 			const previousTitle = state[action.id]["title"];
 			const option = {
 				previousPathRegex: new RegExp('^' + previousPath),
@@ -24,6 +24,14 @@ const fileStructure = (state = {}, action) => {
 			};
 			return _.mapValues(state, (o) => {
 				return memoOrDirectory(o, action, option);
+			});
+		case MOVE_DIRECTORY:
+			const newPath = action.path + state[action.id]['title'] + '/';
+			return _.mapValues(state, (o) => {
+				return memoOrDirectory(o, action, {
+					previousPathRegex: new RegExp('^' + getPath(state, action.id)),
+					newPath: newPath
+				});
 			});
 		default:
 			return state;
@@ -62,9 +70,25 @@ function memoOrDirectory(state = {}, action, option) {
 				...state,
 				path: state.path.replace(option.previousPathRegex, option.newPath)
 			};
+		case MOVE_DIRECTORY:
+			if (action.id === state.id) {
+				return {
+					...state,
+					path: option.newPath
+				}
+			}
+
+			return {
+				...state,
+				path: state.path.replace(option.previousPathRegex, option.newPath)
+			};
 		default:
 			return state;
 	}
+}
+
+function getPath(state, id) {
+	return state[id]['path'];
 }
 
 export default fileStructure;
