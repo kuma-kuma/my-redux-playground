@@ -183,4 +183,19 @@ describe('directory', () => {
 			4: mock.getMockDirectory(4, 'dir3', '/dir1/dir3/')
 		})
 	});
+
+	it('should handle add directory', () => {
+		expect(
+			reducer(
+				undefined,
+				{
+					action: types.ADD_DIRECTORY,
+					id: 1,
+					path: '/2/'
+				}
+			)
+		).toEqual({
+			1: mock.getMockDirectory(1, '', '/2/1')
+		})
+	})
 });
