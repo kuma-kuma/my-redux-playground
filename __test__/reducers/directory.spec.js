@@ -51,7 +51,7 @@ describe('directory', () => {
 					}
 				},
 				{
-					type: types.DELETE_MEMO_OR_DIRECTORY,
+					type: types.DELETE_MEMO,
 					id: 4
 				}
 			)

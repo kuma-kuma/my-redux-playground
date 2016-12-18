@@ -1,4 +1,4 @@
-import {ADD_MEMO, MODIFY_MEMO, MODIFY_DIRECTORY, MOVE_DIRECTORY, DELETE_MEMO_OR_DIRECTORY} from "../actions/actions";
+import {ADD_MEMO, MODIFY_MEMO, MODIFY_DIRECTORY, MOVE_DIRECTORY, DELETE_MEMO} from "../actions/actions";
 import _ from "lodash";
 
 const fileStructure = (state = {}, action) => {
@@ -7,7 +7,7 @@ const fileStructure = (state = {}, action) => {
 			let obj = {...state};
 			obj[action.id] = memoOrDirectory(undefined, action);
 			return obj;
-		case DELETE_MEMO_OR_DIRECTORY:
+		case DELETE_MEMO:
 			return _.pickBy(state, (o) => {
 				return o.id !== action.id;
 			});
