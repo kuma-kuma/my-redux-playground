@@ -72,7 +72,7 @@ describe('directory', () => {
 					10: notAffectedState
 				},
 				{
-					type: types.MODIFY_TEXT,
+					type: types.MODIFY_MEMO,
 					id: 4,
 					text: 'modified'
 				}

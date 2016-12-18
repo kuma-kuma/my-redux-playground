@@ -41,7 +41,7 @@ describe('memos reducer', () => {
 				]
 				,
 				{
-					type: types.MODIFY_TEXT,
+					type: types.MODIFY_MEMO,
 					id: 0,
 					text: 'modified'
 				}

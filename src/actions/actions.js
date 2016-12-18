@@ -1,6 +1,6 @@
 export const PARSE_MARK_DOWN_TEXT = 'PARSE_MARK_DOWN_TEXT';
 export const ADD_MEMO = 'ADD_MEMO';
-export const MODIFY_TEXT = 'MODIFY_TEXT';
+export const MODIFY_MEMO = 'MODIFY_MEMO';
 export const DISPLAY_MEMO = 'DISPLAY_MEMO';
 export const DELETE_MEMO_OR_DIRECTORY = 'DELETE_MEMO_OR_DIRECTORY';
 
@@ -15,7 +15,7 @@ export const addMemo = (id, title, path) => {
 };
 
 export const modifyMemo = (id, text, title) => {
-	return {type: MODIFY_TEXT, id, text, title}
+	return {type: MODIFY_MEMO, id, text, title}
 };
 
 export const displayMemo = (id) => {
