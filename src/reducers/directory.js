@@ -12,7 +12,9 @@ const fileStructure = (state = {}, action) => {
 				return o.id !== action.id;
 			});
 		case MODIFY_MEMO:
-
+			return _.mapValues(state, (o) => {
+				return memo(o, action);
+			});
 		default:
 			return state;
 	}
@@ -27,6 +29,16 @@ function memo(state = {}, action) {
 				title: '',
 				text: ''
 			};
+		case MODIFY_MEMO:
+			if (action.id === state.id) {
+				return {
+					...state,
+					title: action.title,
+					text: action.text
+				}
+			}
+
+			return state;
 		default:
 			return state;
 	}
