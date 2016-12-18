@@ -4,6 +4,7 @@ export const MODIFY_MEMO = 'MODIFY_MEMO';
 export const MODIFY_DIRECTORY = 'MODIFY_DIRECTORY';
 export const DISPLAY_MEMO = 'DISPLAY_MEMO';
 export const DELETE_MEMO_OR_DIRECTORY = 'DELETE_MEMO_OR_DIRECTORY';
+export const MOVE_DIRECTORY = 'MOVE_DIRECTORY';
 
 export const NON_DISPLAYED_MEMO = -1;
 
@@ -29,4 +30,8 @@ export const deleteMemoOrDirectory = (id) => {
 
 export const modifyDirectory = (id, title) => {
 	return {type: MODIFY_DIRECTORY, id, title}
-}
+};
+
+export const moveDirectory = (id, path) => {
+	return {type: MOVE_DIRECTORY, id, path}
+};
