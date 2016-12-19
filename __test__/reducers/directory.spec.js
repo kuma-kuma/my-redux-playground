@@ -12,7 +12,7 @@ describe('directory', () => {
 
 	it('should handle add memo', () => {
 		const id = 2;
-		const path = '/dir1/' + id;
+		const path = '/1/';
 
 		expect(
 			reducer(
@@ -24,8 +24,8 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
-			2: {
-				path: path,
+			[id]: {
+				path: path + id + '/',
 				id: id,
 				text: '',
 				title: '',
