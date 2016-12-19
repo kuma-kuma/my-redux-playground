@@ -171,5 +171,9 @@ describe('directory', () => {
 		).toEqual({
 			1: mock.getMockDirectory(1, 'test', '/2/1/')
 		})
-	})
+	});
+
+	it('should handle move memo', () => {
+
+	});
 });
