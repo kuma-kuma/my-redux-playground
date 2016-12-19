@@ -174,6 +174,22 @@ describe('directory', () => {
 	});
 
 	it('should handle move memo', () => {
-
+		const initialState = {
+			1: mock.getMockMemo(1, 'text1', 'title1', '/2/1'),
+			2: mock.getMockDirectory(2, 'dir1', '/2/'),
+			3: mock.getMockDirectory(3, 'dir2', '/2/3/'),
+		};
+		expect(
+			reducer(initialState,
+				{
+					type: types.MOVE_MEMO,
+					id: 1,
+					location: '/2/3/'
+				}
+			)
+		).toEqual({
+			...initialState,
+			1: mock.getMockMemo(1, 'text1', 'title1', '/2/3/1')
+		})
 	});
 });
