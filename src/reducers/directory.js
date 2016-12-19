@@ -17,16 +17,16 @@ const fileStructure = (state = {}, action) => {
 			});
 		case MODIFY_DIRECTORY:
 			const previousPath = getPath(state, action.id);
-			const previousTitle = state[action.id]["title"];
+			const id = state[action.id]["id"];
 			const option = {
 				previousPathRegex: new RegExp('^' + previousPath),
-				newPath: previousPath.substr(0, previousPath.length - previousTitle.length - 1) + action.title + "/"
+				newPath: previousPath.substr(0, previousPath.length - id.toString().length - 1) + action.id + "/"
 			};
 			return _.mapValues(state, (o) => {
 				return memoOrDirectory(o, action, option);
 			});
 		case MOVE_DIRECTORY:
-			const newPath = action.path + state[action.id]['title'] + '/';
+			const newPath = action.path + state[action.id]['id'] + '/';
 			return _.mapValues(state, (o) => {
 				return memoOrDirectory(o, action, {
 					previousPathRegex: new RegExp('^' + getPath(state, action.id)),
