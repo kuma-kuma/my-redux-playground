@@ -86,17 +86,17 @@ describe('directory', () => {
 	});
 
 	it('should handle modify directory', () => {
+		const initialState = {
+			1: mock.getMockDirectory(1, 'dir1', '/1/'),
+			2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
+			3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
+			4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
+			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
+			6: mock.getMockMemo(6, 'text', 'title', '/1/5/6'),
+			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
+		};
 		expect(
-			reducer(
-				{
-					1: mock.getMockDirectory(1, 'dir1', '/1/'),
-					2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
-					3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
-					4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
-					5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
-					6: mock.getMockMemo(6, 'text', 'title', '/1/5/6'),
-					7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
-				},
+			reducer(initialState,
 				{
 					type: types.MODIFY_DIRECTORY,
 					id: 1,
@@ -104,26 +104,12 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
+			...initialState,
 			1: mock.getMockDirectory(1, 'modified1', '/1/'),
-			2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
-			3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
-			4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
-			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
-			6: mock.getMockMemo(6, 'text', 'title', '/1/5/6'),
-			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 		});
 
 		expect(
-			reducer(
-				{
-					1: mock.getMockDirectory(1, 'dir1', '/1/'),
-					2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
-					3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
-					4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
-					5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
-					6: mock.getMockMemo(6, 'text', 'title', '/5/6'),
-					7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
-				},
+			reducer(initialState,
 				{
 					type: types.MODIFY_DIRECTORY,
 					id: 3,
@@ -131,25 +117,20 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
-			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
+			...initialState,
 			3: mock.getMockDirectory(3, 'modified2', '/1/3/'),
-			4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
-			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
-			6: mock.getMockMemo(6, 'text', 'title', '/5/6'),
-			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 		})
 	});
 
 	it('should handle move directory', () => {
+		const initialState = {
+			1: mock.getMockDirectory(1, 'dir1', '/1/'),
+			2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
+			3: mock.getMockMemo(3, 'memo', 'memo3', '/1/2/4/3'),
+			4: mock.getMockDirectory(4, 'dir3', '/1/2/4/')
+		};
 		expect(
-			reducer(
-				{
-					1: mock.getMockDirectory(1, 'dir1', '/1/'),
-					2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
-					3: mock.getMockMemo(3, 'memo', 'memo3', '/1/2/4/3'),
-					4: mock.getMockDirectory(4, 'dir3', '/1/2/4/')
-				},
+			reducer(initialState,
 				{
 					type: types.MOVE_DIRECTORY,
 					id: 4,
@@ -157,19 +138,12 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
-			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
+			...initialState,
 			3: mock.getMockMemo(3, 'memo', 'memo3', '/4/3'),
 			4: mock.getMockDirectory(4, 'dir3', '/4/')
 		});
 		expect(
-			reducer(
-				{
-					1: mock.getMockDirectory(1, 'dir1', '/1/'),
-					2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
-					3: mock.getMockMemo(3, 'memo', 'memo3', '/1/2/4/3'),
-					4: mock.getMockDirectory(4, 'dir3', '/1/2/4/')
-				},
+			reducer(initialState,
 				{
 					type: types.MOVE_DIRECTORY,
 					id: 4,
@@ -177,25 +151,24 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
-			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
+			...initialState,
 			3: mock.getMockMemo(3, 'memo', 'memo3', '/1/4/3'),
 			4: mock.getMockDirectory(4, 'dir3', '/1/4/')
 		})
 	});
 
-	it('should handle add directory', () => {
-		expect(
-			reducer(
-				undefined,
-				{
-					action: types.ADD_DIRECTORY,
-					id: 1,
-					path: '/2/'
-				}
-			)
-		).toEqual({
-			1: mock.getMockDirectory(1, '', '/2/1')
-		})
-	})
+	// it('should handle add directory', () => {
+	// 	expect(
+	// 		reducer(
+	// 			undefined,
+	// 			{
+	// 				action: types.ADD_DIRECTORY,
+	// 				id: 1,
+	// 				path: '/2/'
+	// 			}
+	// 		)
+	// 	).toEqual({
+	// 		1: mock.getMockDirectory(1, '', '/2/1')
+	// 	})
+	// })
 });
