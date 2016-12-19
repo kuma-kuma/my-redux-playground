@@ -89,13 +89,13 @@ describe('directory', () => {
 		expect(
 			reducer(
 				{
-					1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
-					2: mock.getMockMemo(2, 'text', 'title', '/dir1/2'),
-					3: mock.getMockDirectory(3, 'dir2', '/dir1/dir2/'),
-					4: mock.getMockMemo(4, 'text', 'title', '/dir1/dir2/4'),
-					5: mock.getMockDirectory(5, 'dir3', '/dir1/dir3/'),
-					6: mock.getMockMemo(6, 'text', 'title', '/dir1/dir3/6'),
-					7: mock.getMockDirectory(7, 'dir4', '/dir1/dir2/dir4/')
+					1: mock.getMockDirectory(1, 'dir1', '/1/'),
+					2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
+					3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
+					4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
+					5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
+					6: mock.getMockMemo(6, 'text', 'title', '/1/5/6'),
+					7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 				},
 				{
 					type: types.MODIFY_DIRECTORY,
@@ -104,25 +104,25 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
-			1: mock.getMockDirectory(1, 'modified1', '/modified1/'),
-			2: mock.getMockMemo(2, 'text', 'title', '/modified1/2'),
-			3: mock.getMockDirectory(3, 'dir2', '/modified1/dir2/'),
-			4: mock.getMockMemo(4, 'text', 'title', '/modified1/dir2/4'),
-			5: mock.getMockDirectory(5, 'dir3', '/modified1/dir3/'),
-			6: mock.getMockMemo(6, 'text', 'title', '/modified1/dir3/6'),
-			7: mock.getMockDirectory(7, 'dir4', '/modified1/dir2/dir4/')
+			1: mock.getMockDirectory(1, 'modified1', '/1/'),
+			2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
+			3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
+			4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
+			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
+			6: mock.getMockMemo(6, 'text', 'title', '/1/5/6'),
+			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 		});
 
 		expect(
 			reducer(
 				{
-					1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
-					2: mock.getMockMemo(2, 'text', 'title', '/dir1/2'),
-					3: mock.getMockDirectory(3, 'dir2', '/dir1/dir2/'),
-					4: mock.getMockMemo(4, 'text', 'title', '/dir1/dir2/4'),
-					5: mock.getMockDirectory(5, 'dir3', '/dir1/dir3/'),
-					6: mock.getMockMemo(6, 'text', 'title', '/dir3/6'),
-					7: mock.getMockDirectory(7, 'dir4', '/dir1/dir2/dir4/')
+					1: mock.getMockDirectory(1, 'dir1', '/1/'),
+					2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
+					3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
+					4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
+					5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
+					6: mock.getMockMemo(6, 'text', 'title', '/5/6'),
+					7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 				},
 				{
 					type: types.MODIFY_DIRECTORY,
@@ -131,13 +131,13 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
-			1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
-			2: mock.getMockMemo(2, 'text', 'title', '/dir1/2'),
-			3: mock.getMockDirectory(3, 'modified2', '/dir1/modified2/'),
-			4: mock.getMockMemo(4, 'text', 'title', '/dir1/modified2/4'),
-			5: mock.getMockDirectory(5, 'dir3', '/dir1/dir3/'),
-			6: mock.getMockMemo(6, 'text', 'title', '/dir3/6'),
-			7: mock.getMockDirectory(7, 'dir4', '/dir1/modified2/dir4/')
+			1: mock.getMockDirectory(1, 'dir1', '/1/'),
+			2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
+			3: mock.getMockDirectory(3, 'modified2', '/1/3/'),
+			4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
+			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
+			6: mock.getMockMemo(6, 'text', 'title', '/5/6'),
+			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 		})
 	});
 
@@ -145,10 +145,10 @@ describe('directory', () => {
 		expect(
 			reducer(
 				{
-					1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
-					2: mock.getMockDirectory(2, 'dir2', '/dir1/dir2/'),
-					3: mock.getMockMemo(3, 'memo', 'memo3', '/dir1/dir2/dir3/memo3'),
-					4: mock.getMockDirectory(4, 'dir3', '/dir1/dir2/dir3/')
+					1: mock.getMockDirectory(1, 'dir1', '/1/'),
+					2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
+					3: mock.getMockMemo(3, 'memo', 'memo3', '/1/2/5/3'),
+					4: mock.getMockDirectory(4, 'dir3', '/1/2/5/')
 				},
 				{
 					type: types.MOVE_DIRECTORY,
@@ -157,30 +157,30 @@ describe('directory', () => {
 				}
 			)
 		).toEqual({
-			1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
-			2: mock.getMockDirectory(2, 'dir2', '/dir1/dir2/'),
-			3: mock.getMockMemo(3, 'memo', 'memo3', '/dir3/memo3'),
-			4: mock.getMockDirectory(4, 'dir3', '/dir3/')
+			1: mock.getMockDirectory(1, 'dir1', '/1/'),
+			2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
+			3: mock.getMockMemo(3, 'memo', 'memo3', '/5/3'),
+			4: mock.getMockDirectory(4, 'dir3', '/5/')
 		});
 		expect(
 			reducer(
 				{
-					1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
-					2: mock.getMockDirectory(2, 'dir2', '/dir1/dir2/'),
-					3: mock.getMockMemo(3, 'memo', 'memo3', '/dir1/dir2/dir3/memo3'),
-					4: mock.getMockDirectory(4, 'dir3', '/dir1/dir2/dir3/')
+					1: mock.getMockDirectory(1, 'dir1', '/1/'),
+					2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
+					3: mock.getMockMemo(3, 'memo', 'memo3', '/1/2/5/3'),
+					4: mock.getMockDirectory(4, 'dir3', '/1/2/5/')
 				},
 				{
 					type: types.MOVE_DIRECTORY,
 					id: 4,
-					path: '/dir1/'
+					path: '/1/'
 				}
 			)
 		).toEqual({
-			1: mock.getMockDirectory(1, 'dir1', '/dir1/'),
-			2: mock.getMockDirectory(2, 'dir2', '/dir1/dir2/'),
-			3: mock.getMockMemo(3, 'memo', 'memo3', '/dir1/dir3/memo3'),
-			4: mock.getMockDirectory(4, 'dir3', '/dir1/dir3/')
+			1: mock.getMockDirectory(1, 'dir1', '/1/'),
+			2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
+			3: mock.getMockMemo(3, 'memo', 'memo3', '/1/5/3'),
+			4: mock.getMockDirectory(4, 'dir3', '/1/5/')
 		})
 	});
 
