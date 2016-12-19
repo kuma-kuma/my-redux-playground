@@ -30,8 +30,8 @@ export const deleteMemo = (id) => {
 	return {type: DELETE_MEMO, id}
 };
 
-export const addDirectory = (id, path) => {
-	return {type: ADD_DIRECTORY, id, path}
+export const addDirectory = (id, location, title) => {
+	return {type: ADD_DIRECTORY, id, location, title}
 };
 
 export const modifyDirectory = (id, title) => {
