@@ -4,8 +4,10 @@ import _ from "lodash";
 const fileStructure = (state = {}, action) => {
 	switch (action.type) {
 		case ADD_MEMO:
-			let obj = {...state};
-			obj[action.id] = memoOrDirectory(undefined, action);
+			let obj = {
+				...state,
+				[action.id]: memoOrDirectory(undefined, action)
+			};
 			return obj;
 		case DELETE_MEMO:
 			return _.pickBy(state, (o) => {
@@ -51,7 +53,7 @@ function memoOrDirectory(state = {}, action, option) {
 	switch (action.type) {
 		case ADD_MEMO:
 			return {
-				path: action.path,
+				path: action.path + action.id + '/',
 				id: action.id,
 				title: '',
 				text: ''
