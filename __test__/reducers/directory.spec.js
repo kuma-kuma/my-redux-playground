@@ -192,4 +192,8 @@ describe('directory', () => {
 			1: mock.getMockMemo(1, 'text1', 'title1', '/2/3/1')
 		})
 	});
+
+	it('should handle delete directory', () => {
+
+	});
 });
