@@ -1,8 +1,11 @@
 export const PARSE_MARK_DOWN_TEXT = 'PARSE_MARK_DOWN_TEXT';
+
 export const ADD_MEMO = 'ADD_MEMO';
 export const MODIFY_MEMO = 'MODIFY_MEMO';
+export const MOVE_MEMO = 'MOVE_MEMO';
 export const DISPLAY_MEMO = 'DISPLAY_MEMO';
 export const DELETE_MEMO = 'DELETE_MEMO';
+
 export const ADD_DIRECTORY = 'ADD_DIRECTORY';
 export const MODIFY_DIRECTORY = 'MODIFY_DIRECTORY';
 export const MOVE_DIRECTORY = 'MOVE_DIRECTORY';
@@ -24,6 +27,10 @@ export const modifyMemo = (id, text, title) => {
 
 export const displayMemo = (id) => {
 	return {type: DISPLAY_MEMO, id}
+};
+
+export const moveMemo = (id, location) => {
+	return {type: MOVE_MEMO, id, location}
 };
 
 export const deleteMemo = (id) => {
