@@ -1,4 +1,12 @@
-import {ADD_MEMO, MODIFY_MEMO, DELETE_MEMO, MODIFY_DIRECTORY, MOVE_DIRECTORY, ADD_DIRECTORY} from "../actions/actions";
+import {
+	ADD_MEMO,
+	MODIFY_MEMO,
+	MOVE_MEMO,
+	DELETE_MEMO,
+	MODIFY_DIRECTORY,
+	MOVE_DIRECTORY,
+	ADD_DIRECTORY
+} from "../actions/actions";
 import _ from "lodash";
 
 const fileStructure = (state = {}, action) => {
@@ -17,6 +25,14 @@ const fileStructure = (state = {}, action) => {
 			return _.mapValues(state, (o) => {
 				return memoOrDirectory(o, action);
 			});
+		case MOVE_MEMO:
+			return {
+				...state,
+				[action.id]: {
+					...state[action.id],
+					path: action.location + action.id
+				}
+			};
 		case MODIFY_DIRECTORY:
 			const previousPath = getPath(state, action.id);
 			const id = state[action.id]["id"];
