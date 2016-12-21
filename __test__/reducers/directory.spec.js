@@ -14,11 +14,8 @@ describe('directory', () => {
 	it('should handle modify directory', () => {
 		const initialState = {
 			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
 			3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
-			4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
 			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
-			6: mock.getMockMemo(6, 'text', 'title', '/1/5/6'),
 			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 		};
 		expect(
@@ -52,7 +49,6 @@ describe('directory', () => {
 		const initialState = {
 			1: mock.getMockDirectory(1, 'dir1', '/1/'),
 			2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
-			3: mock.getMockMemo(3, 'memo', 'memo3', '/1/2/4/3'),
 			4: mock.getMockDirectory(4, 'dir3', '/1/2/4/')
 		};
 		expect(
@@ -65,7 +61,6 @@ describe('directory', () => {
 			)
 		).toEqual({
 			...initialState,
-			3: mock.getMockMemo(3, 'memo', 'memo3', '/4/3'),
 			4: mock.getMockDirectory(4, 'dir3', '/4/')
 		});
 		expect(
@@ -78,7 +73,6 @@ describe('directory', () => {
 			)
 		).toEqual({
 			...initialState,
-			3: mock.getMockMemo(3, 'memo', 'memo3', '/1/4/3'),
 			4: mock.getMockDirectory(4, 'dir3', '/1/4/')
 		})
 	});
@@ -103,11 +97,8 @@ describe('directory', () => {
 	it('should handle delete directory', () => {
 		const initialState = {
 			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			2: mock.getMockMemo(2, 'text', 'title', '/1/2'),
 			3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
-			4: mock.getMockMemo(4, 'text', 'title', '/1/3/4'),
 			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
-			6: mock.getMockMemo(6, 'text', 'title', '/1/5/6'),
 			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 		};
 	});
