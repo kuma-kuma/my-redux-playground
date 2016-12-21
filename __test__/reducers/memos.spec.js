@@ -1,5 +1,6 @@
 import reducer from "../../src/reducers/memos";
 import * as types from "../../src/actions/actions";
+import mock from "../mock/mockState";
 
 describe('memos reducer', () => {
 	it('should return the initial state', () => {
@@ -15,16 +16,13 @@ describe('memos reducer', () => {
 				{
 					type: types.ADD_MEMO,
 					id: 0,
-					title: 'add memo'
+					title: 'add memo',
+					location: '/2/'
 				}
 			)
 		).toEqual(
 			[
-				{
-					text: '',
-					id: 0,
-					title: 'add memo'
-				}
+				mock.getMockMemo(0, '', 'add memo', '/2/0')
 			]
 		)
 	});
