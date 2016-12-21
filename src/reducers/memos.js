@@ -1,4 +1,4 @@
-import {ADD_MEMO, MODIFY_MEMO, DELETE_MEMO} from "../actions/actions";
+import {ADD_MEMO, MODIFY_MEMO, DELETE_MEMO, MOVE_MEMO} from "../actions/actions";
 import _ from "lodash";
 
 const memos = (state = [], action) => {
@@ -16,6 +16,10 @@ const memos = (state = [], action) => {
 			return _.filter(state, (o) => {
 				return action.id !== o.id;
 			});
+		case MOVE_MEMO:
+			return state.map(o =>
+				memo(o, action)
+			);
 		default:
 			return state
 	}
@@ -38,6 +42,15 @@ function memo(state = {}, action) {
 			return {
 				...state,
 				text: action.text,
+			};
+		case MOVE_MEMO:
+			if (state.id !== action.id) {
+				return state;
+			}
+
+			return {
+				...state,
+				path: action.location + state.id
 			};
 		default:
 			return state;
