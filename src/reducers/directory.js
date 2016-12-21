@@ -21,7 +21,7 @@ const directories = (state = [], action) => {
 				}
 			];
 		case DELETE_DIRECTORY:
-			return _.pickBy(state, o =>
+			return _.filter(state, o =>
 				action.id !== o.id
 			);
 		default:
