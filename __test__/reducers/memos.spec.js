@@ -55,7 +55,8 @@ describe('memos reducer', () => {
 					notDeletedMemo,
 					mock.getMockMemo(1, 'test1', 'title1', '/2/1')
 				]
-				, {
+				,
+				{
 					type: types.DELETE_MEMO,
 					id: 1
 				}
@@ -65,5 +66,26 @@ describe('memos reducer', () => {
 				notDeletedMemo
 			]
 		)
-	})
+	});
+
+	it('should handle MOVE_MEMO', () => {
+		const targetMemo = mock.getMockMemo(2, 'text2', 'title2', '/1/2');
+		expect(
+			reducer(
+				[
+					targetMemo,
+				],
+				{
+					type: types.MOVE_MEMO,
+					id: 2,
+					location: '/3/4/'
+				}
+			)
+		).toEqual(
+			[
+				{...targetMemo, path: '/3/4/2'}
+			]
+		)
+	});
+
 });
