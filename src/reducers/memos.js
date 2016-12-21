@@ -23,7 +23,8 @@ function memo(state = {}, action) {
 			return {
 				text: '',
 				id: action.id,
-				title: action.title
+				title: action.title,
+				path: action.location + action.id
 			};
 		case  MODIFY_MEMO:
 			if (state.id !== action.id) {
