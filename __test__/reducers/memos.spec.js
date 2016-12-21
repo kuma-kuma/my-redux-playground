@@ -89,4 +89,11 @@ describe('memos reducer', () => {
 		)
 	});
 
+	it('should handle MOVE_DIRECTORY', () => {
+
+	});
+
+	it('should handle DELETE_DIRECTORY', () => {
+
+	});
 });
