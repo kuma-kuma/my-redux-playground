@@ -1,7 +1,7 @@
 import reducer from "../../src/reducers/directory";
 import * as types from "../../src/actions/actions";
 import mock from "../mock/mockState";
-
+import _ from "lodash";
 describe('directory', () => {
 
 	const notAffectedState = mock.getMockMemo(10, 'test', 'testTitle', '10');
@@ -27,8 +27,8 @@ describe('directory', () => {
 				}
 			)
 		).toEqual([
-			...initialState,
 			mock.getMockDirectory(1, 'modified1', '/1/'),
+			..._.tail(initialState),
 		]);
 
 		expect(
@@ -40,8 +40,9 @@ describe('directory', () => {
 				}
 			)
 		).toEqual([
-			...initialState,
+			initialState[0],
 			mock.getMockDirectory(3, 'modified2', '/1/3/'),
+			..._.takeRight(initialState, 2)
 		])
 	});
 
