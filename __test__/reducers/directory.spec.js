@@ -7,17 +7,17 @@ describe('directory', () => {
 	const notAffectedState = mock.getMockMemo(10, 'test', 'testTitle', '10');
 
 	it('should return the initial state', () => {
-		expect(reducer(undefined, {})).toEqual({});
+		expect(reducer(undefined, {})).toEqual([]);
 	});
 
 
 	it('should handle modify directory', () => {
-		const initialState = {
-			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
-			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
-			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
-		};
+		const initialState = [
+			mock.getMockDirectory(1, 'dir1', '/1/'),
+			mock.getMockDirectory(3, 'dir2', '/1/3/'),
+			mock.getMockDirectory(5, 'dir3', '/1/5/'),
+			mock.getMockDirectory(7, 'dir4', '/1/3/7/')
+		];
 		expect(
 			reducer(initialState,
 				{
@@ -26,10 +26,10 @@ describe('directory', () => {
 					title: 'modified1'
 				}
 			)
-		).toEqual({
+		).toEqual([
 			...initialState,
-			1: mock.getMockDirectory(1, 'modified1', '/1/'),
-		});
+			mock.getMockDirectory(1, 'modified1', '/1/'),
+		]);
 
 		expect(
 			reducer(initialState,
@@ -39,18 +39,18 @@ describe('directory', () => {
 					title: 'modified2'
 				}
 			)
-		).toEqual({
+		).toEqual([
 			...initialState,
-			3: mock.getMockDirectory(3, 'modified2', '/1/3/'),
-		})
+			mock.getMockDirectory(3, 'modified2', '/1/3/'),
+		])
 	});
 
 	it('should handle move directory', () => {
-		const initialState = {
-			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			2: mock.getMockDirectory(2, 'dir2', '/1/2/'),
-			4: mock.getMockDirectory(4, 'dir3', '/1/2/4/')
-		};
+		const initialState = [
+			mock.getMockDirectory(1, 'dir1', '/1/'),
+			mock.getMockDirectory(2, 'dir2', '/1/2/'),
+			mock.getMockDirectory(4, 'dir3', '/1/2/4/')
+		];
 		expect(
 			reducer(initialState,
 				{
@@ -60,10 +60,10 @@ describe('directory', () => {
 					newLocation: '/'
 				}
 			)
-		).toEqual({
+		).toEqual([
 			...initialState,
-			4: mock.getMockDirectory(4, 'dir3', '/4/')
-		});
+			mock.getMockDirectory(4, 'dir3', '/4/')
+		]);
 
 		expect(
 			reducer(initialState,
@@ -74,10 +74,10 @@ describe('directory', () => {
 					newLocation: '/1/'
 				}
 			)
-		).toEqual({
+		).toEqual([
 			...initialState,
-			4: mock.getMockDirectory(4, 'dir3', '/1/4/')
-		})
+			mock.getMockDirectory(4, 'dir3', '/1/4/')
+		])
 	});
 
 	it('should handle add directory', () => {
@@ -91,24 +91,24 @@ describe('directory', () => {
 					title: 'test'
 				}
 			)
-		).toEqual({
-			1: mock.getMockDirectory(1, 'test', '/2/1/')
-		})
+		).toEqual([
+			mock.getMockDirectory(1, 'test', '/2/1/')
+		])
 	});
 
 
 	it('should handle delete directory', () => {
 		const targetDir = mock.getMockDirectory(3, 'dir2', '/1/3/');
 
-		const notTargetDirs = {
-			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
-			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
-		};
+		const notTargetDirs = [
+			mock.getMockDirectory(1, 'dir1', '/1/'),
+			mock.getMockDirectory(5, 'dir3', '/1/5/'),
+			mock.getMockDirectory(7, 'dir4', '/1/3/7/')
+		];
 
 		expect(
 			reducer(
-				{...notTargetDirs, 3: targetDir},
+				[...notTargetDirs, targetDir],
 				{
 					type: types.DELETE_DIRECTORY,
 					id: 3,
