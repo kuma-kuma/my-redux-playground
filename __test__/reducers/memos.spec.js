@@ -46,4 +46,24 @@ describe('memos reducer', () => {
 			]
 		)
 	});
+
+	it('should handle DELETE_MEMO', () => {
+		const notDeletedMemo = mock.getMockMemo(0, 'test0', 'title0', '/0');
+		expect(
+			reducer(
+				[
+					notDeletedMemo,
+					mock.getMockMemo(1, 'test1', 'title1', '/2/1')
+				]
+				, {
+					type: types.DELETE_MEMO,
+					id: 1
+				}
+			)
+		).toEqual(
+			[
+				notDeletedMemo
+			]
+		)
+	})
 });
