@@ -17,8 +17,8 @@ export const parseMarkDownText = (index) => {
 	return { type: PARSE_MARK_DOWN_TEXT, index}
 };
 
-export const addMemo = (id, title, path) => {
-	return {type: ADD_MEMO, id, title, path}
+export const addMemo = (id, title, location) => {
+	return {type: ADD_MEMO, id, title, location}
 };
 
 export const modifyMemo = (id, text, title) => {
