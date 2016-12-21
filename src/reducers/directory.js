@@ -12,14 +12,14 @@ const directories = (state = [], action) => {
 				return memoOrDirectory(o, action);
 			});
 		case ADD_DIRECTORY:
-			return {
+			return [
 				...state,
-				[action.id]: {
+				{
 					id: action.id,
 					title: action.title,
 					path: action.location + action.id + '/'
 				}
-			};
+			];
 		case DELETE_DIRECTORY:
 			return _.pickBy(state, o =>
 				action.id !== o.id
