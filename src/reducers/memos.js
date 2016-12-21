@@ -1,4 +1,5 @@
-import {ADD_MEMO, MODIFY_MEMO} from "../actions/actions";
+import {ADD_MEMO, MODIFY_MEMO, DELETE_MEMO} from "../actions/actions";
+import _ from "lodash";
 
 const memos = (state = [], action) => {
 	switch (action.type) {
@@ -11,11 +12,14 @@ const memos = (state = [], action) => {
 			return state.map(m =>
 				memo(m, action)
 			);
+		case DELETE_MEMO:
+			return _.filter(state, (o) => {
+				return action.id !== o.id;
+			});
 		default:
 			return state
 	}
-
-}
+};
 
 function memo(state = {}, action) {
 	switch (action.type) {
