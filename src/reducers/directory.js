@@ -4,14 +4,8 @@ import _ from "lodash";
 const directories = (state = {}, action) => {
 	switch (action.type) {
 		case MODIFY_DIRECTORY:
-			const previousPath = getPath(state, action.id);
-			const id = state[action.id]["id"];
-			const option = {
-				previousPathRegex: new RegExp('^' + previousPath),
-				newPath: previousPath.substr(0, previousPath.length - id.toString().length - 1) + action.id + "/"
-			};
 			return _.mapValues(state, (o) => {
-				return memoOrDirectory(o, action, option);
+				return memoOrDirectory(o, action);
 			});
 		case MOVE_DIRECTORY:
 			const newPath = action.path + state[action.id]['id'] + '/';
@@ -42,14 +36,10 @@ function memoOrDirectory(state = {}, action, option) {
 				return {
 					...state,
 					title: action.title,
-					path: option.newPath
 				}
 			}
 
-			return {
-				...state,
-				path: state.path.replace(option.previousPathRegex, option.newPath)
-			};
+			return state;
 		case MOVE_DIRECTORY:
 			if (action.id === state.id) {
 				return {
