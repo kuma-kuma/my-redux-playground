@@ -62,7 +62,7 @@ describe('directory', () => {
 				}
 			)
 		).toEqual([
-			...initialState,
+			..._.take(initialState, 2),
 			mock.getMockDirectory(4, 'dir3', '/4/')
 		]);
 
@@ -76,7 +76,7 @@ describe('directory', () => {
 				}
 			)
 		).toEqual([
-			...initialState,
+			..._.take(initialState, 2),
 			mock.getMockDirectory(4, 'dir3', '/1/4/')
 		])
 	});
