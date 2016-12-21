@@ -31,11 +31,7 @@ describe('memos reducer', () => {
 		expect(
 			reducer(
 				[
-					{
-						text: 'not modified',
-						id: 0,
-						title: 'memo'
-					}
+					mock.getMockMemo(0, 'text', 'text0', '/0')
 				]
 				,
 				{
@@ -46,11 +42,7 @@ describe('memos reducer', () => {
 			)
 		).toEqual(
 			[
-				{
-					text: 'modified',
-					id: 0,
-					title: 'memo'
-				}
+				mock.getMockMemo(0, 'modified', 'text0', '/0')
 			]
 		)
 	});
