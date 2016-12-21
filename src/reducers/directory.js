@@ -5,11 +5,11 @@ const directories = (state = [], action) => {
 	switch (action.type) {
 		case MODIFY_DIRECTORY:
 			return _.map(state, (o) => {
-				return memoOrDirectory(o, action);
+				return directory(o, action);
 			});
 		case MOVE_DIRECTORY:
 			return _.map(state, (o) => {
-				return memoOrDirectory(o, action);
+				return directory(o, action);
 			});
 		case ADD_DIRECTORY:
 			return [
@@ -29,7 +29,7 @@ const directories = (state = [], action) => {
 	}
 };
 
-function memoOrDirectory(state = {}, action, option) {
+function directory(state = {}, action, option) {
 	switch (action.type) {
 		case MODIFY_DIRECTORY:
 			if (action.id === state.id) {
