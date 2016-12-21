@@ -1,4 +1,4 @@
-import {MODIFY_DIRECTORY, MOVE_DIRECTORY, ADD_DIRECTORY} from "../actions/actions";
+import {MODIFY_DIRECTORY, MOVE_DIRECTORY, ADD_DIRECTORY, DELETE_DIRECTORY} from "../actions/actions";
 import _ from "lodash";
 
 const directories = (state = {}, action) => {
@@ -20,6 +20,10 @@ const directories = (state = {}, action) => {
 					path: action.location + action.id + '/'
 				}
 			};
+		case DELETE_DIRECTORY:
+			return _.pickBy(state, o =>
+				action.id !== o.id
+			);
 		default:
 			return state;
 	}
