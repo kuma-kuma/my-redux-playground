@@ -13,9 +13,9 @@ const memos = (state = [], action) => {
 				memo(m, action)
 			);
 		case DELETE_MEMO:
-			return _.filter(state, (o) => {
-				return action.id !== o.id;
-			});
+			return _.filter(state, o =>
+				action.id !== o.id
+			);
 		case MOVE_MEMO:
 			return state.map(o =>
 				memo(o, action)

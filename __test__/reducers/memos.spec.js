@@ -28,10 +28,11 @@ describe('memos reducer', () => {
 	});
 
 	it('should handle MODIFY_MEMO', () => {
+		const targetMemo = mock.getMockMemo(0, 'text', 'text0', '/0');
 		expect(
 			reducer(
 				[
-					mock.getMockMemo(0, 'text', 'text0', '/0')
+					targetMemo
 				]
 				,
 				{
@@ -42,7 +43,7 @@ describe('memos reducer', () => {
 			)
 		).toEqual(
 			[
-				mock.getMockMemo(0, 'modified', 'text0', '/0')
+				{...targetMemo, text: 'modified'}
 			]
 		)
 	});
