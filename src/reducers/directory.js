@@ -8,7 +8,7 @@ const directories = (state = [], action) => {
 				return memoOrDirectory(o, action);
 			});
 		case MOVE_DIRECTORY:
-			return _.mapValues(state, (o) => {
+			return _.map(state, (o) => {
 				return memoOrDirectory(o, action);
 			});
 		case ADD_DIRECTORY:
@@ -44,7 +44,7 @@ function memoOrDirectory(state = {}, action, option) {
 			if (action.id === state.id) {
 				return {
 					...state,
-					path: action.newLocation + state.id.toString() + '/'
+					path: action.newLocation + state.id + '/'
 				}
 			}
 
