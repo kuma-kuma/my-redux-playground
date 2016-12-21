@@ -56,19 +56,22 @@ describe('directory', () => {
 				{
 					type: types.MOVE_DIRECTORY,
 					id: 4,
-					path: '/'
+					previousPath: '/1/2/4/',
+					newLocation: '/'
 				}
 			)
 		).toEqual({
 			...initialState,
 			4: mock.getMockDirectory(4, 'dir3', '/4/')
 		});
+
 		expect(
 			reducer(initialState,
 				{
 					type: types.MOVE_DIRECTORY,
 					id: 4,
-					path: '/1/'
+					previousPath: '/1/2/4/',
+					newLocation: '/1/'
 				}
 			)
 		).toEqual({
