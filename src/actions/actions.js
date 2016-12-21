@@ -9,6 +9,7 @@ export const DELETE_MEMO = 'DELETE_MEMO';
 export const ADD_DIRECTORY = 'ADD_DIRECTORY';
 export const MODIFY_DIRECTORY = 'MODIFY_DIRECTORY';
 export const MOVE_DIRECTORY = 'MOVE_DIRECTORY';
+export const DELETE_DIRECTORY = 'DELETE_DIRECTORY';
 
 
 export const NON_DISPLAYED_MEMO = -1;
@@ -47,4 +48,8 @@ export const modifyDirectory = (id, title) => {
 
 export const moveDirectory = (id, previousPath, newLocation) => {
 	return {type: MOVE_DIRECTORY, id, previousPath, newLocation}
+};
+
+export const deleteDirectory = (id, path) => {
+	return {type: DELETE_DIRECTORY, id, path}
 };
