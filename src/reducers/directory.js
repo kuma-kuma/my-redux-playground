@@ -4,7 +4,7 @@ import _ from "lodash";
 const directories = (state = [], action) => {
 	switch (action.type) {
 		case MODIFY_DIRECTORY:
-			return _.mapValues(state, (o) => {
+			return _.map(state, (o) => {
 				return memoOrDirectory(o, action);
 			});
 		case MOVE_DIRECTORY:
