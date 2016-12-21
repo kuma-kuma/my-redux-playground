@@ -45,6 +45,6 @@ export const modifyDirectory = (id, title) => {
 	return {type: MODIFY_DIRECTORY, id, title}
 };
 
-export const moveDirectory = (id, path) => {
-	return {type: MOVE_DIRECTORY, id, path}
+export const moveDirectory = (id, previousPath, newLocation) => {
+	return {type: MOVE_DIRECTORY, id, previousPath, newLocation}
 };
