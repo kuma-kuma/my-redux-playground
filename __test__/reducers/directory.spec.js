@@ -98,11 +98,23 @@ describe('directory', () => {
 
 
 	it('should handle delete directory', () => {
-		const initialState = {
+		const targetDir = mock.getMockDirectory(3, 'dir2', '/1/3/');
+
+		const notTargetDirs = {
 			1: mock.getMockDirectory(1, 'dir1', '/1/'),
-			3: mock.getMockDirectory(3, 'dir2', '/1/3/'),
 			5: mock.getMockDirectory(5, 'dir3', '/1/5/'),
 			7: mock.getMockDirectory(7, 'dir4', '/1/3/7/')
 		};
+
+		expect(
+			reducer(
+				{...notTargetDirs, 3: targetDir},
+				{
+					type: types.DELETE_DIRECTORY,
+					id: 3,
+					path: targetDir.path,
+				}
+			)
+		).toEqual(notTargetDirs);
 	});
 });
