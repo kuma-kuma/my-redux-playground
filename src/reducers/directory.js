@@ -1,7 +1,7 @@
 import {MODIFY_DIRECTORY, MOVE_DIRECTORY, ADD_DIRECTORY, DELETE_DIRECTORY} from "../actions/actions";
 import _ from "lodash";
 
-const directories = (state = {}, action) => {
+const directories = (state = [], action) => {
 	switch (action.type) {
 		case MODIFY_DIRECTORY:
 			return _.mapValues(state, (o) => {
