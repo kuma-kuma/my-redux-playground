@@ -10,80 +10,6 @@ describe('directory', () => {
 		expect(reducer(undefined, {})).toEqual({});
 	});
 
-	it('should handle add memo', () => {
-		const id = 2;
-		const path = '/1/';
-
-		expect(
-			reducer(
-				{},
-				{
-					type: types.ADD_MEMO,
-					path: path,
-					id: id
-				}
-			)
-		).toEqual({
-			[id]: {
-				path: path + id + '/',
-				id: id,
-				text: '',
-				title: '',
-			}
-		});
-	});
-
-	it('should handle delete memo', () => {
-		expect(
-			reducer(
-				{
-					4: {
-						path: '4',
-						id: 4,
-						text: 'test',
-						title: 'title4'
-					},
-					5: {
-						path: '5',
-						id: 5,
-						text: 'test',
-						title: 'title5'
-					}
-				},
-				{
-					type: types.DELETE_MEMO,
-					id: 4
-				}
-			)
-		).toEqual({
-			5: {
-				path: '5',
-				id: 5,
-				text: 'test',
-				title: 'title5'
-			}
-		})
-	});
-
-	it('should handle modify memo', () => {
-		expect(
-			reducer(
-				{
-					4: mock.getMockMemo(4, 'text', 'title', '4'),
-					10: notAffectedState
-				},
-				{
-					type: types.MODIFY_MEMO,
-					id: 4,
-					text: 'text is modified',
-					title: 'title is modified'
-				}
-			)
-		).toEqual({
-			4: mock.getMockMemo(4, 'text is modified', 'title is modified', '4'),
-			10: notAffectedState
-		})
-	});
 
 	it('should handle modify directory', () => {
 		const initialState = {
@@ -173,25 +99,6 @@ describe('directory', () => {
 		})
 	});
 
-	it('should handle move memo', () => {
-		const initialState = {
-			1: mock.getMockMemo(1, 'text1', 'title1', '/2/1'),
-			2: mock.getMockDirectory(2, 'dir1', '/2/'),
-			3: mock.getMockDirectory(3, 'dir2', '/2/3/'),
-		};
-		expect(
-			reducer(initialState,
-				{
-					type: types.MOVE_MEMO,
-					id: 1,
-					location: '/2/3/'
-				}
-			)
-		).toEqual({
-			...initialState,
-			1: mock.getMockMemo(1, 'text1', 'title1', '/2/3/1')
-		})
-	});
 
 	it('should handle delete directory', () => {
 		const initialState = {

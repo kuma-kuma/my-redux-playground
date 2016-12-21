@@ -1,38 +1,8 @@
-import {
-	ADD_MEMO,
-	MODIFY_MEMO,
-	MOVE_MEMO,
-	DELETE_MEMO,
-	MODIFY_DIRECTORY,
-	MOVE_DIRECTORY,
-	ADD_DIRECTORY
-} from "../actions/actions";
+import {MODIFY_DIRECTORY, MOVE_DIRECTORY, ADD_DIRECTORY} from "../actions/actions";
 import _ from "lodash";
 
-const fileStructure = (state = {}, action) => {
+const directories = (state = {}, action) => {
 	switch (action.type) {
-		case ADD_MEMO:
-			let obj = {
-				...state,
-				[action.id]: memoOrDirectory(undefined, action)
-			};
-			return obj;
-		case DELETE_MEMO:
-			return _.pickBy(state, (o) => {
-				return o.id !== action.id;
-			});
-		case MODIFY_MEMO:
-			return _.mapValues(state, (o) => {
-				return memoOrDirectory(o, action);
-			});
-		case MOVE_MEMO:
-			return {
-				...state,
-				[action.id]: {
-					...state[action.id],
-					path: action.location + action.id
-				}
-			};
 		case MODIFY_DIRECTORY:
 			const previousPath = getPath(state, action.id);
 			const id = state[action.id]["id"];
@@ -67,23 +37,6 @@ const fileStructure = (state = {}, action) => {
 
 function memoOrDirectory(state = {}, action, option) {
 	switch (action.type) {
-		case ADD_MEMO:
-			return {
-				path: action.path + action.id + '/',
-				id: action.id,
-				title: '',
-				text: ''
-			};
-		case MODIFY_MEMO:
-			if (action.id === state.id) {
-				return {
-					...state,
-					title: action.title,
-					text: action.text
-				}
-			}
-
-			return state;
 		case MODIFY_DIRECTORY:
 			if (action.id === state.id) {
 				return {
@@ -118,4 +71,4 @@ function getPath(state, id) {
 	return state[id]['path'];
 }
 
-export default fileStructure;
+export default directories;
