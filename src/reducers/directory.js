@@ -41,12 +41,12 @@ function directory(state = {}, action, option) {
 
 			return state;
 		case MOVE_DIRECTORY:
-			if (action.id === state.id) {
-				return {
-					...state,
-					path: action.newLocation + state.id + '/'
-				}
-			}
+			const newLocation = action.newLocation + action.id + '/';
+			const rgx = new RegExp('^' + action.previousPath);
+			return {
+				...state,
+				path: state.path.replace(rgx, newLocation)
+			};
 
 			return state;
 		default:
