@@ -102,7 +102,7 @@ describe('memos reducer', () => {
 					type: types.MOVE_DIRECTORY,
 					id: 6,
 					previousPath: '/5/6/',
-					location: '/'
+					newLocation: '/'
 				}
 			)
 		).toEqual(
@@ -122,7 +122,7 @@ describe('memos reducer', () => {
 					type: types.MOVE_DIRECTORY,
 					id: 3,
 					previousPath: '/3/',
-					location: '/5/6/'
+					newLocation: '/5/6/'
 				}
 			)
 		).toEqual(
