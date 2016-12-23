@@ -91,6 +91,41 @@ describe('memos reducer', () => {
 
 	it('should handle MOVE_DIRECTORY', () => {
 
+		expect(
+			reducer(
+				[
+					mock.getMockMemo(1, 'text1', 'title1', '/5/6/1'),
+					mock.getMockDirectory(2, 'text2', 'title2', '/5/2'),
+					mock.getMockDirectory(3, 'text3', 'title3', '/5/6/7/3')
+				],
+				{
+					type: types.MOVE_DIRECTORY,
+					id: 6,
+					previousPath: '/5/6/',
+					location: '/'
+				}
+			)
+		).toEqual(
+			[
+				mock.getMockMemo(1, 'text1', 'title1', '/6/1'),
+				mock.getMockDirectory(2, 'text2', 'title2', '/5/2'),
+				mock.getMockDirectory(3, 'text3', 'title3', '/6/7/3')
+			]
+		);
+
+		expect(
+			reducer(
+				[
+					mock.getMockMemo(1, 'text1', 'title1', '/3/7/1'),
+				],
+				{
+					type: types.MOVE_DIRECTORY,
+					id: 3,
+					previousPath: '/3/',
+					location: '/5/6/'
+				}
+			)
+		)
 	});
 
 	it('should handle DELETE_DIRECTORY', () => {
