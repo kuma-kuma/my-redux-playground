@@ -125,6 +125,10 @@ describe('memos reducer', () => {
 					location: '/5/6/'
 				}
 			)
+		).toEqual(
+			[
+				mock.getMockMemo(1, 'text1', 'title1', '/5/6/3/7/1')
+			]
 		)
 	});
 
