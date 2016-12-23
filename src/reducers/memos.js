@@ -57,7 +57,7 @@ function memo(state = {}, action) {
 				path: action.location + state.id
 			};
 		case MOVE_DIRECTORY:
-			const newLocation = action.location + action.id + '/';
+			const newLocation = action.newLocation + action.id + '/';
 			const rgx = new RegExp('^' + action.previousPath);
 			return {
 				...state,
