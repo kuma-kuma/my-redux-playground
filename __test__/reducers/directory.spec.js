@@ -50,7 +50,8 @@ describe('directory', () => {
 		const initialState = [
 			mock.getMockDirectory(1, 'dir1', '/1/'),
 			mock.getMockDirectory(2, 'dir2', '/1/2/'),
-			mock.getMockDirectory(4, 'dir3', '/1/2/4/')
+			mock.getMockDirectory(5, 'dir4', '/1/2/4/5/'),
+			mock.getMockDirectory(4, 'dir3', '/1/2/4/'),
 		];
 		expect(
 			reducer(initialState,
@@ -63,6 +64,7 @@ describe('directory', () => {
 			)
 		).toEqual([
 			..._.take(initialState, 2),
+			mock.getMockDirectory(5, 'dir4', '/4/5/'),
 			mock.getMockDirectory(4, 'dir3', '/4/')
 		]);
 
@@ -77,6 +79,7 @@ describe('directory', () => {
 			)
 		).toEqual([
 			..._.take(initialState, 2),
+			mock.getMockDirectory(5, 'dir4', '/1/4/5/'),
 			mock.getMockDirectory(4, 'dir3', '/1/4/')
 		])
 	});
