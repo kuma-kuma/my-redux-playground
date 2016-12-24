@@ -1,14 +1,13 @@
 import {MODIFY_DIRECTORY, MOVE_DIRECTORY, ADD_DIRECTORY, DELETE_DIRECTORY} from "../actions/actions";
-import _ from "lodash";
 
 const directories = (state = [], action) => {
 	switch (action.type) {
 		case MODIFY_DIRECTORY:
-			return _.map(state, o =>
+			return state.map(o =>
 				directory(o, action)
 			);
 		case MOVE_DIRECTORY:
-			return _.map(state, o =>
+			return state.map(o =>
 				directory(o, action)
 			);
 		case ADD_DIRECTORY:
@@ -21,7 +20,7 @@ const directories = (state = [], action) => {
 				}
 			];
 		case DELETE_DIRECTORY:
-			return _.filter(state, o =>
+			return state.filter(o =>
 				directory(o, action)
 			);
 		default:
