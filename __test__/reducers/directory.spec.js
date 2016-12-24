@@ -119,6 +119,6 @@ describe('directory', () => {
 					path: targetDir.path,
 				}
 			)
-		).toEqual(notTargetDirs);
+		).toEqual(_.take(notTargetDirs, 2));
 	});
 });
