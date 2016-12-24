@@ -1,4 +1,4 @@
-import {ADD_MEMO, MODIFY_MEMO, DELETE_MEMO, MOVE_MEMO, MOVE_DIRECTORY} from "../actions/actions";
+import {ADD_MEMO, MODIFY_MEMO, DELETE_MEMO, MOVE_MEMO, MOVE_DIRECTORY, DELETE_DIRECTORY} from "../actions/actions";
 import _ from "lodash";
 
 const memos = (state = [], action) => {
@@ -22,6 +22,10 @@ const memos = (state = [], action) => {
 			);
 		case MOVE_DIRECTORY:
 			return state.map(o =>
+				memo(o, action)
+			);
+		case DELETE_DIRECTORY:
+			return state.filter(o =>
 				memo(o, action)
 			);
 		default:
@@ -63,6 +67,9 @@ function memo(state = {}, action) {
 				...state,
 				path: state.path.replace(rgx, newLocation)
 			};
+		case DELETE_DIRECTORY:
+			const deleteRgx = new RegExp('^' + action.path);
+			return !state.path.match(deleteRgx);
 		default:
 			return state;
 	}
