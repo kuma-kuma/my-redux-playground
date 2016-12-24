@@ -22,7 +22,7 @@ const directories = (state = [], action) => {
 			];
 		case DELETE_DIRECTORY:
 			return _.filter(state, o =>
-				action.id !== o.id
+				directory(o, action)
 			);
 		default:
 			return state;
@@ -47,8 +47,10 @@ function directory(state = {}, action, option) {
 				...state,
 				path: state.path.replace(rgx, newLocation)
 			};
-
 			return state;
+		case DELETE_DIRECTORY:
+			const deletedRgx = new RegExp('^' + action.path);
+			return !state.path.match(deletedRgx);
 		default:
 			return state;
 	}
