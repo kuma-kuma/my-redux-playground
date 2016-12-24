@@ -4,13 +4,13 @@ import _ from "lodash";
 const directories = (state = [], action) => {
 	switch (action.type) {
 		case MODIFY_DIRECTORY:
-			return _.map(state, (o) => {
-				return directory(o, action);
-			});
+			return _.map(state, o =>
+				directory(o, action)
+			);
 		case MOVE_DIRECTORY:
-			return _.map(state, (o) => {
-				return directory(o, action);
-			});
+			return _.map(state, o =>
+				directory(o, action)
+			);
 		case ADD_DIRECTORY:
 			return [
 				...state,
