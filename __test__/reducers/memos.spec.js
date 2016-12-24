@@ -133,6 +133,24 @@ describe('memos reducer', () => {
 	});
 
 	it('should handle DELETE_DIRECTORY', () => {
+		const targetMemo = mock.getMockMemo(4, 'text1', 'title1', '/2/3/6/4');
+		const notTargetMemos = [
+			mock.getMockMemo(10, 'text2', 'title2', '/2/3/10'),
+			mock.getMockMemo(8, 'text3', 'title3', '/8'),
+		];
 
+		expect(
+			reducer(
+				[
+					...notTargetMemos,
+					targetMemo
+				],
+				{
+					type: types.DELETE_DIRECTORY,
+					id: 6,
+					path: '/2/3/6/'
+				}
+			)
+		).toEqual(notTargetMemos);
 	});
 });
