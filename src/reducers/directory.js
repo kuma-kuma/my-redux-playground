@@ -56,8 +56,5 @@ function directory(state = {}, action, option) {
 	}
 }
 
-function getPath(state, id) {
-	return state[id]['path'];
-}
 
 export default directories;
