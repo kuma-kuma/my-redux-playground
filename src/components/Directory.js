@@ -8,7 +8,7 @@ const Directory = ({directoryItems, memoItems}) => (
 			{directoryItems.map((directory) =>
 				<DirectoryItem
 					key={directory.id}
-					{...directory}
+					item={directory}
 				/>
 			)}
 		</div>
@@ -16,7 +16,7 @@ const Directory = ({directoryItems, memoItems}) => (
 			{memoItems.map((memo) =>
 				<MemoItem
 					key={memo.id}
-					{...memo}
+					item={memo}
 				/>
 			)}
 		</div>
