@@ -22,9 +22,7 @@ function rootDirectoryItems(state) {
 }
 
 function rootMemoItems(state) {
-	return state.directories.filter(d =>
-		d.path.match(/^\/\d+$/)
-	)
+	return itemFilterByRegex(/^\/\d+$/, state.memos);
 }
 
 function makeContain(directoryItems, memoItems) {
