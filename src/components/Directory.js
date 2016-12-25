@@ -23,4 +23,20 @@ const Directory = ({directoryItems, memoItems}) => (
 	</div>
 );
 
+Directory.propTypes = {
+	directoryItems: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		title: PropTypes.string.isRequired,
+		path: PropTypes.string.isRequired
+	}).isRequired).isRequired,
+
+	memoItems: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		title: PropTypes.string.isRequired,
+		text: PropTypes.string.isRequired,
+		path: PropTypes.string.isRequired
+	}).isRequired).isRequired,
+};
+
 export default Directory;
+
