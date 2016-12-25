@@ -1,9 +1,9 @@
 import React, {PropTypes} from "react";
 
-const Item = ({item}) => (
+const MemoItem = ({item}) => (
 	<div>
 		<p>{item.title}</p>
 	</div>
 );
 
-export default Item;
+export default MemoItem;
