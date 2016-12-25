@@ -34,16 +34,12 @@ function makeContain(directoryItems, memoItems) {
 
 function directoryItems(id, state) {
 	const rgx = new RegExp('/' + id + '/\\d+/$');
-	return state.directories.filter(d =>
-		d.path.match(rgx)
-	)
+	return itemFilterByRegex(rgx, state.directories);
 }
 
 function memoItems(id, state) {
 	const rgx = new RegExp('/' + id + '/\\d+$');
-	return state.memos.filter(m =>
-		m.path.match(rgx)
-	)
+	return itemFilterByRegex(rgx, state.memos);
 }
 
 function itemFilterByRegex(rgx, items) {
