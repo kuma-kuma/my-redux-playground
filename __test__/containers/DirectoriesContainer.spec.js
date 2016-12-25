@@ -20,6 +20,7 @@ function setup() {
 			mock.getMockMemoById(9, '/1/4/'),
 			mock.getMockMemoById(10, '/1/3/5/'),
 			mock.getMockMemoById(11, '/1/3/5/'),
+			mock.getMockMemoById(12, '/'),
 		],
 		location: '/1/3/5/'
 	});
@@ -45,7 +46,9 @@ describe('DirectoriesContainer', () => {
 				mock.getMockDirectoryById(1, '/'),
 				mock.getMockDirectoryById(2, '/'),
 			],
-			memoItems: []
+			memoItems: [
+				mock.getMockMemoById(12, '/'),
+			]
 		});
 
 		expect(contains[1]).toEqual({
