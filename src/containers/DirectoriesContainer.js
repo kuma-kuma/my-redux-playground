@@ -18,9 +18,7 @@ const mapStateToProps = state => {
 };
 
 function rootDirectoryItems(state) {
-	return state.directories.filter(d =>
-		d.path.match(/^\/\d+\/$/)
-	)
+	return itemFilterByRegex(/^\/\d+\/$/, state.directories);
 }
 
 function rootMemoItems(state) {
@@ -47,6 +45,12 @@ function memoItems(id, state) {
 	const rgx = new RegExp('/' + id + '/\\d+$');
 	return state.memos.filter(m =>
 		m.path.match(rgx)
+	)
+}
+
+function itemFilterByRegex(rgx, items) {
+	return items.filter(i =>
+		i.path.match(rgx)
 	)
 }
 
