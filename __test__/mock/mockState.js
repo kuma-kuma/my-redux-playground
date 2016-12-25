@@ -32,9 +32,24 @@ const getMockDirectoryById = (id, location) => {
 	}
 };
 
+const storeFake = (state) => {
+	return {
+		default: () => {
+		},
+		subscribe: () => {
+		},
+		dispatch: () => {
+		},
+		getState: () => {
+			return {...state};
+		},
+	};
+};
+
 export default {
 	getMockMemo,
 	getMockDirectory,
 	getMockMemoById,
 	getMockDirectoryById,
+	storeFake,
 }
