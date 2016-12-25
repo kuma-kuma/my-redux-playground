@@ -24,8 +24,17 @@ const getMockMemoById = (id, path) => {
 	}
 };
 
+const getMockDirectoryById = (id, path) => {
+	return {
+		id: id,
+		title: 'title' + id,
+		path: path
+	}
+};
+
 export default {
 	getMockMemo,
 	getMockDirectory,
-	getMockMemoById
+	getMockMemoById,
+	getMockDirectoryById,
 }
