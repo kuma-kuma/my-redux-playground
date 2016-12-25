@@ -15,20 +15,20 @@ const getMockDirectory = (id, title, path) => {
 	}
 };
 
-const getMockMemoById = (id, path) => {
+const getMockMemoById = (id, location) => {
 	return {
 		id: id,
 		title: 'title' + id,
 		text: 'text' + id,
-		path: path
+		path: location + id,
 	}
 };
 
-const getMockDirectoryById = (id, path) => {
+const getMockDirectoryById = (id, location) => {
 	return {
 		id: id,
 		title: 'title' + id,
-		path: path
+		path: location + id + '/',
 	}
 };
 
