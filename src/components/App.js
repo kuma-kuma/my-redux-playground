@@ -1,11 +1,11 @@
 import React from "react";
-import MemoListContainer from "../containers/MemoListContainer";
+import DirectoriesContainer from "../containers/DirectoriesContainer";
 import ParsedTextContainer from "../containers/ParsedTextContainer";
 import MemoContainer from "../containers/MemoContainer";
 
 const App = () => (
 	<div>
-		<MemoListContainer/>
+		<DirectoriesContainer/>
 		<MemoContainer/>
 
 		<ParsedTextContainer/>
