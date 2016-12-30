@@ -1,15 +1,13 @@
-import React from "react";
-import DirectoriesContainer from "../containers/DirectoriesContainer";
-import ParsedTextContainer from "../containers/ParsedTextContainer";
-import MemoContainer from "../containers/MemoContainer";
+import React, {Component} from "react";
 
-const App = () => (
-	<div>
-		<DirectoriesContainer/>
-		<MemoContainer/>
-
-		<ParsedTextContainer/>
-	</div>
-);
+class App extends Component {
+	render() {
+		return (
+			<div>
+				{this.props.children}
+			</div>
+		)
+	}
+}
 
 export default App
