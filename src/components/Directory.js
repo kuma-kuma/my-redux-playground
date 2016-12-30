@@ -1,5 +1,5 @@
 import React, {PropTypes} from "react";
-import DirectoryItem from "./DirectoryItem";
+import DirectoryItem from "../containers/DirectoryItemContainer";
 import MemoItem from "./MemoItem";
 
 const Directory = ({directoryItems, memoItems}) => (
