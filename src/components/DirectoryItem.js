@@ -1,5 +1,6 @@
 import React from "react";
 import {changeLocation} from "../actions/actions";
+import {connect} from "react-redux";
 
 const DirectoryItem = ({item, dispatch}) => (
 	<div onClick={e => {
@@ -10,4 +11,4 @@ const DirectoryItem = ({item, dispatch}) => (
 	</div>
 );
 
-export default DirectoryItem;
+export default connect()(DirectoryItem);
